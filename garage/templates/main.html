@@ -1,0 +1,19 @@
+<html>
+
+<body>
+    <p>The LED is currently {{ led_state }}</p>
+    <p>The Door is currently {{ door_state }}</p>
+    <form action="http://localhost:5000/output/on" method="post" target="dummyframe">
+        <p><input type="submit" value="On" /></p>
+    </form>
+    <form action="http://localhost:5000/output/off" method="post" target="dummyframe">
+        <p><input type="submit" value="Off" /></p>
+    </form>
+    <form action="http://localhost:5000/output/blink" method="post" target="dummyframe">
+        <p><input type="submit" value="Blink" /></p>
+    </form>
+    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+</body>
+</body>
+
+</html>
