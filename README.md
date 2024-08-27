@@ -28,9 +28,11 @@ _Coming_
 - v3
   - Web camera feed on page
 - v4
-  - React Native frontend and android app
+  - Move to FastAPI backend
 - v5
-  - design and order a custom HAT PCB
+  - Move to React Native frontend and android app
+- v6
+  - Design and order a custom HAT PCB
 
 ## Issues
 
@@ -39,10 +41,16 @@ _Coming_
 There's something weird going on with Poetry and we need to disable keyrings to get it to not hang.
 
 ```bash
-# https://github.com/python-poetry/poetry/issues/1917#issuecomment-1251667047
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+```
+
+or
+
+```bash
 python3 -m keyring --disable
 ```
+
+- https://github.com/python-poetry/poetry/issues/1917#issuecomment-1251667047
 
 ### GPIO busy
 
@@ -52,6 +60,9 @@ lgpio.error: 'GPIO busy'
 
 You can't run Flask in Debug mode with GPIO. At least not Buttons. Something to do with multithreading.
 
+- https://forums.raspberrypi.com/viewtopic.php?t=362014&start=25
+
 ## References
 
-_Coming_
+- [Documentation - gpiozero](https://gpiozero.readthedocs.io/en/stable/index.html)
+- [Documentation - rpi-lgpio](https://rpi-lgpio.readthedocs.io/en/release-0.4/index.html)
