@@ -12,6 +12,10 @@ I'm going to wire a relay into the garage door opener and contorl it with a webs
 
 ![breadboard model](Garage_bb.png)
 
+### Bill of Materials
+
+_Coming_
+
 ## Future Plans
 
 - v1
@@ -25,6 +29,8 @@ I'm going to wire a relay into the garage door opener and contorl it with a webs
   - Web camera feed on page
 - v4
   - React Native frontend and android app
+- v5
+  - design and order a custom HAT PCB
 
 ## Issues
 
@@ -45,3 +51,7 @@ lgpio.error: 'GPIO busy'
 ```
 
 You can't run Flask in Debug mode with GPIO. At least not Buttons. Something to do with multithreading.
+
+## References
+
+_Coming_
