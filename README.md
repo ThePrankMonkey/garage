@@ -62,6 +62,14 @@ You can't run Flask in Debug mode with GPIO. At least not Buttons. Something to 
 
 - https://forums.raspberrypi.com/viewtopic.php?t=362014&start=25
 
+### Form Submit redirects
+
+I don't want the page to change when the button (forms) are clicked.
+
+So I need to make a dummy iframes and point the forms to reload them.
+
+- https://stackoverflow.com/questions/25983603/how-to-submit-an-html-form-without-redirection
+
 ## References
 
 - [Documentation - gpiozero](https://gpiozero.readthedocs.io/en/stable/index.html)
