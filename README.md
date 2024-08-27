@@ -10,7 +10,7 @@ I'm going to wire a relay into the garage door opener and contorl it with a webs
 
 ## Design
 
-[!](Garage_bb.png)
+![breadboard model](Garage_bb.png)
 
 ## Issues
 
