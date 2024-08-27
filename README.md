@@ -12,6 +12,20 @@ I'm going to wire a relay into the garage door opener and contorl it with a webs
 
 ![breadboard model](Garage_bb.png)
 
+## Future Plans
+
+- v1
+  - Relay to act as garage door button
+  - Magnetic Door Sensor to report door is closed
+  - Magnetic Door Sensor to report door is opened
+  - Basic Flask website
+- v2
+  - Authentication
+- v3
+  - Web camera feed on page
+- v4
+  - React Native frontend and android app
+
 ## Issues
 
 ### Poetry hangs on install/add
