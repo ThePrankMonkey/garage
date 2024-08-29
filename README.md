@@ -8,6 +8,10 @@ I need to remotely open my garage so my kids can take their bikes in and out and
 
 I'm going to wire a relay into the garage door opener and contorl it with a webserver.
 
+## Research
+
+![official garage door wiring](./garagedoor_wiring.png) shows that the opener button only needs to bridge ports 3 and 4.
+
 ## Design
 
 ![breadboard model](Garage_bb.png)
@@ -72,5 +76,8 @@ So I need to make a dummy iframes and point the forms to reload them.
 
 ## References
 
+- [Example - ismartgate](https://ismartgate.com/smart-garage-door-opener-for-genie-reliag-850/), has a nice wiring diagram that shows where to connect my relay.
+- [Example - JoeHeyming](https://imgur.com/a/i-used-raspberry-pi-to-hack-garage-door-opener-q4OqKBp), this uses a door opener that is wired onto.
+- [Documentation - Garage Manual](https://landmarkgaragedoors.com/wp-content/uploads/2014/08/reliag-850-650_operation-maintenance-manual_08-131.pdf)
 - [Documentation - gpiozero](https://gpiozero.readthedocs.io/en/stable/index.html)
 - [Documentation - rpi-lgpio](https://rpi-lgpio.readthedocs.io/en/release-0.4/index.html)
