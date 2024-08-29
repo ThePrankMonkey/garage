@@ -3,45 +3,62 @@ from gpiozero import LED, Button
 import RPi.GPIO
 from time import sleep
 
-led = LED(17)
-door_open = Button(12)
-door_closed = Button(13)
+relay = LED(17)
+sensor_bottom = Button(12)
+sensor_top = Button(13)
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    led_state = "OFF"
-    if led.value:
-        led_state = "ON"
+    relay_state = "OFF"
+    if relay.value:
+        relay_state = "ON"
     door_state = "Unknown"
-    if door_open.is_pressed and not door_closed.is_pressed:
+    if sensor_top.is_pressed and not sensor_bottom.is_pressed:
         door_state = "Open"
-    if door_closed.is_pressed and not door_open.is_pressed:
+    if sensor_bottom.is_pressed and not sensor_top.is_pressed:
         door_state = "Closed"
     vars = {
-        "led_state": led_state,
+        "relay_state": relay_state,
         "door_state": door_state,
     }
     return render_template('main.html', **vars)
 
 @app.route('/output/<state>', methods=["POST"])
-def door(state):
-    print("Hit door")
+def gpio_output(state):
+    print("Hit Output")
     if state == "on":
         print("Turning LED on")
-        led.on()
+        relay.on()
         return Response(status=200)
     elif state == "off":
         print("Turning LED off")
-        led.off()
+        relay.off()
         return Response(status=200)
     elif state == "blink":
         print("Blinking LED")
-        led.blink(on_time=0.3, n=1)
+        relay.blink(on_time=0.3, n=1)
         return Response(status=200)
     else:
         print(f"Unknown state: {state}")
         return Response(status=500)
+
+@app.route('/input', methods=["GET"])
+def gpio_input(state):
+    print("Hit Input")
+    door_state = "Unknown"
+    if sensor_top.is_pressed and not sensor_bottom.is_pressed:
+        door_state = "Open"
+    if sensor_bottom.is_pressed and not sensor_top.is_pressed:
+        door_state = "Closed"
+    response = {
+        "sensor_bottom": sensor_bottom.is_pressed,
+        "sensor_top": sensor_top.is_pressed,
+        "door_state": door_state,
+        "relay_state": relay.value,
+    }
+    return Response(status=500)
+
 
 if __name__ == '__main__':
     try:
