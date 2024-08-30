@@ -44,7 +44,7 @@ def gpio_output(state):
         return Response(status=500)
 
 @app.route('/input', methods=["GET"])
-def gpio_input(state):
+def gpio_input():
     print("Hit Input")
     door_state = "Unknown"
     if sensor_top.is_pressed and not sensor_bottom.is_pressed:
@@ -57,8 +57,25 @@ def gpio_input(state):
         "door_state": door_state,
         "relay_state": relay.value,
     }
-    return Response(status=500)
+    return Response(response, status=200)
 
+@app.route('/input/<sensor>', methods=["GET"])
+def gpio_input2(sensor):
+    print("Hit Input2")
+    door_state = "Unknown"
+    if sensor == "sensor_bottom":
+        response = {
+            "sensor": "sensor_bottom",
+            "state": sensor_bottom.is_pressed,
+        }
+    elif sensor == "sensor_top":
+        response = {
+            "sensor": "sensor_top",
+            "state": sensor_top.is_pressed,
+        }
+    else:
+        return Response(status=404)
+    return Response(response, status=200)
 
 if __name__ == '__main__':
     try:
