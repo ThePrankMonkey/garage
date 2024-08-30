@@ -57,7 +57,7 @@ def gpio_input():
         "door_state": door_state,
         "relay_state": relay.value,
     }
-    return Response(response, status=200)
+    return response, 200
 
 @app.route('/input/<sensor>', methods=["GET"])
 def gpio_input2(sensor):
@@ -75,7 +75,7 @@ def gpio_input2(sensor):
         }
     else:
         return Response(status=404)
-    return Response(response, status=200)
+    return response, 200
 
 if __name__ == '__main__':
     try:
