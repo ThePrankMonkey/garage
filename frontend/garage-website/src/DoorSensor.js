@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-export function DoorSensor(props) {
+function DoorSensor(props) {
   const [endpointData, setEndpointData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const checkEndpoint = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:5000/input/${props.sensor}`);
+      const response = await fetch(
+        `http://192.168.86.64:5000/input/${props.sensor}`
+      );
       const data = await response.json();
-      setEndpointData(JSON.stringify(data, null, 2));
+      console.log(data);
+      console.log("Sensor:", data.sensor);
+      console.log("State:", data.state);
+      setEndpointData(data);
       setError(null);
     } catch (error) {
       setError(error);
@@ -20,7 +25,7 @@ export function DoorSensor(props) {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(checkEndpoint, 1000); // Check every second
+    const intervalId = setInterval(checkEndpoint, 5000); // Check every second
 
     // Cleanup the interval on component unmount
     return () => clearInterval(intervalId);
@@ -34,8 +39,12 @@ export function DoorSensor(props) {
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : (
-        <pre>{endpointData.sensor} is set to {endpointData.state}</pre>
+        <pre>
+          {endpointData.sensor} is set to {endpointData.state.toString()}
+        </pre>
       )}
     </div>
   );
 }
+
+export default DoorSensor;
