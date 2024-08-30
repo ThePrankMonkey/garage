@@ -1,4 +1,5 @@
 from flask import Flask, Response, render_template, request
+from flask_cors import CORS, cross_origin
 from gpiozero import LED, Button
 import RPi.GPIO
 from time import sleep
@@ -7,6 +8,8 @@ relay = LED(17)
 sensor_bottom = Button(12)
 sensor_top = Button(13)
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def hello_world():
