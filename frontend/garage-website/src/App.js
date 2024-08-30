@@ -1,6 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-import DoorSensor from './DoorSensor'
+import logo from "./logo.svg";
+import "./App.css";
+import DoorSensor from "./DoorSensor";
+import RelayButton from "./RelayButton";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         </a>
         <DoorSensor sensor="sensor_top"></DoorSensor>
         <DoorSensor sensor="sensor_bottom"></DoorSensor>
+        <RelayButton />
       </header>
     </div>
   );
